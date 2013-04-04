@@ -437,7 +437,7 @@ ngx_write_syslog(ngx_syslog_t *task, u_char *buf, size_t len)
 
     if (n < 0) {
 
-        if(errno == ENOTCONN || errno == ECONNREFUSED){
+        if (errno == ENOTCONN || errno == ECONNREFUSED) {
             ngx_close_socket(task->fd);
             task->fd = NGX_INVALID_FILE;
         }
@@ -464,7 +464,7 @@ ngx_syslog_prebuild_header(ngx_syslog_t *task)
         + (task->ident.len == 0
             ? (ident_len = sizeof(NGINX_VAR) - 1)
             : (ident_len = task->ident.len))
-        + sizeof(" [") - 1
+        + sizeof("[") - 1
         + p - pid
         + sizeof("]: ") - 1;
 
